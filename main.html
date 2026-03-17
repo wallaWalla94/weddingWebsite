@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device,initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="stylesMain.css"/>
+    <title>Gina & Carlos </title>
+  <!-- The callback parameter is required, so we use console.debug as a noop -->
+</head>
+<body>
+<section class="salute">
+  <div class="nav-bar">
+    <img class="header-img" id="logo" alt="CG-logo" src="img/cgLogo.png"/>
+    <nav id="navbar">
+      <ul>
+        <li class="nav"><a >RSVP</a></li>
+        <li class="nav"><a >Gallery</a></li>
+        <li class="nav"><a >Location</a></li>
+        <li class="nav"><a >Contact</a></li>
+        <img class="header-img" id="logo2" alt="wedding-logo" src="img/chineseWeddingCircleI.png"/>
+      </ul>
+    </nav>
+</div>
+  <!-- Container for the image gallery -->
+  <div class="sliding-gallery">
+    <div class="slide-box box1">
+    <!-- Full-width images with number text -->
+    <div class="mySlides">
+      <img class="img-gallery" src="img/sliding1.png"  onclick="currentSlide(1)" alt="The Woods">
+    </div>
+    <div class="mySlides">
+      <img class="img-gallery" src="img/sliding2.png"  onclick="currentSlide(2)" alt="Cinque Terre">
+    </div>
+    <div class="mySlides">
+      <img class="img-gallery" src="img/sliding3.png"  onclick="currentSlide(3)" alt="Mountains and fjords">
+    </div>
+    <div class="mySlides">
+      <img class="img-gallery" src="img/sliding4.jpg"  onclick="currentSlide(4)" alt="Northern Lights">
+    </div>
+    <div class="mySlides">
+      <img class="img-gallery" src="img/sliding5.jpg"  onclick="currentSlide(5)" alt="Nature and sunrise">
+    </div>
+    <div class="mySlides">
+      <img class="img-gallery" src="img/sliding6.jpeg"  onclick="currentSlide(6)" alt="Snowy Mountains">
+    </div>
+      <!-- Next and previous buttons -->
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <div class="info box1">
+      <img class="img-info" src="img/To our Family and Friends We are pleased to invite you to our wedding,.png"  alt="Salute">
+    </div>
+  </div>
+</section>
+<section class="location">
+  <div class="box2">
+    <img class="img-location" src="img/Location-Lodge.png" alt="Lake Wilderness Lodge">
+  </div>
+  <div class="map box2" id="googleMap" >
+    <img class="img-location map-img" src="img/MapWedding.png" alt="Wedding Map">
+  </div>
+</section>
+<section class="our-story">
+  <div class="box3 box-rsvp" onclick="showAlert()">
+    <audio id="audio" src="OpusNo1.mp3" type="audio/mpeg"></audio>
+    <p class="rsvp-title">RSVP</p>
+  </div>
+  <div class="box3">
+  <img class="img-story" src="img/rsvpImage.png" alt="rsvpImage">
+  </div>
+</section>
+<section class="rsvp-contact" >
+  <div class="box4 box-contact">
+    <h1 class="contact-title">Contact Us</h1>
+    <p class="contact-text">email: ginacarloswedding@gmail.com</p>
+    <p class="contact-text">WhatsApp: +</p>
+    <p class="contact-text"></p>
+  </div>
+</section>
+<script src="js/scriptWedding.js"></script>
+</body>
+</html>
