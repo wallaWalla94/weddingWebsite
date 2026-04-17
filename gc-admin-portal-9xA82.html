@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="css/admin.css">
+  <title>Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<section id="loginSection" class="card" style="max-width: 420px; margin: 40px auto;">
+  <h1>Admin Login</h1>
+  <p id="authStatus"></p>
+  <div class="controls" style="display: grid; gap: 12px;">
+    <input id="adminEmail" type="email" placeholder="Email" autocomplete="username" />
+    <input id="adminPassword" type="password" placeholder="Password" autocomplete="current-password" />
+    <button id="loginBtn" type="button">Sign in</button>
+  </div>
+</section>
+
+<section id="dashboardSection" hidden>
+  <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom: 16px;">
+    <h1 style="margin:0;">Wedding RSVP Dashboard</h1>
+    <button id="logoutBtn" type="button">Sign out</button>
+  </div>
+
+  <section class="stats">
+    <div class="card">
+      <h2 id="totalInvited">0</h2>
+      <p>Total invited</p>
+    </div>
+    <div class="card">
+      <h2 id="totalAttending">0</h2>
+      <p>Attending</p>
+    </div>
+    <div class="card">
+      <h2 id="totalDeclined">0</h2>
+      <p>Declined</p>
+    </div>
+    <div class="card">
+      <h2 id="totalPending">0</h2>
+      <p>Pending</p>
+    </div>
+  </section>
+
+  <section class="controls">
+    <input id="searchInput" type="text" placeholder="Search guest or household" />
+    <select id="statusFilter">
+      <option value="all">All</option>
+      <option value="yes">Attending</option>
+      <option value="no">Declined</option>
+      <option value="pending">Pending</option>
+    </select>
+    <button id="refreshBtn" type="button">Refresh</button>
+    <button id="exportBtn" type="button">Export CSV</button>
+  </section>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Household</th>
+      <th>Guest</th>
+      <th>Status</th>
+      <th>Dietary</th>
+      <th>Contact</th>
+      <th>Message</th>
+    </tr>
+    </thead>
+    <tbody id="dashboardBody"></tbody>
+  </table>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabaseWeddingConfig.js"></script>
+<script src="js/admin.js"></script>
+</body>

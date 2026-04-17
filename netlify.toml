@@ -1,0 +1,12 @@
+[build]
+functions = "netlify/functions"
+
+[[redirects]]
+from = "/gc-ops-9xA82"
+to = "/gc-admin-portal-9xA82.html"
+status = 200
+
+[[redirects]]
+from = "/gc-admin-portal-9xA82.html"
+to = "/"
+status = 404

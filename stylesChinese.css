@@ -1,0 +1,989 @@
+:root {
+  --lacquer: #68191f;
+  --lacquer-deep: #3d0b10;
+  --vermilion: #a1292f;
+  --gold: #cfab62;
+  --ivory: #f7f0e6;
+  --paper: #fbf7f0;
+  --ink: #221517;
+  --jade: #5c7866;
+  --line: rgba(207, 171, 98, 0.42);
+  --shadow: 0 16px 40px rgba(34, 21, 23, 0.18);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top, rgba(207, 171, 98, 0.06), transparent 15%),
+    linear-gradient(180deg, #2a0c11 0%, #340d12 15%, #3d0b10 100%);
+  color: var(--ivory);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  color: var(--ivory);
+}
+
+.hero-slides,
+.hero-slide,
+.hero-slide img,
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-slide {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+}
+
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  background:
+    linear-gradient(180deg, rgba(26, 7, 10, 0.35) 0%, rgba(26, 7, 10, 0.7) 100%),
+    radial-gradient(circle at center, transparent 10%, rgba(26, 7, 10, 0.15) 60%);
+}
+
+.top-shell,
+.hero-content,
+.hero-controls {
+  position: relative;
+  z-index: 2;
+}
+
+.top-shell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem 1rem 0;
+}
+
+.brand-mark {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  padding: 0.65rem;
+  background: rgba(247, 240, 230, 0.12);
+  border: 1px solid rgba(207, 171, 98, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.menu-toggle-chinese {
+  position: fixed;
+  right: 1rem;
+  top: 1rem;
+  z-index: 45;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 1px solid rgba(207, 171, 98, 0.4);
+  background: rgba(104, 25, 31, 0.96);
+  display: grid;
+  place-items: center;
+  gap: 0.25rem;
+  padding: 0;
+  box-shadow: 0 14px 30px rgba(34, 21, 23, 0.28);
+}
+
+.menu-toggle-chinese span {
+  display: block;
+  width: 22px;
+  height: 1.75px;
+  background: var(--ivory);
+}
+
+.site-nav {
+  position: fixed;
+  left: 1rem;
+  right: 1rem;
+  top: 5.6rem;
+  z-index: 30;
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  padding: 1rem;
+  background: rgba(40, 12, 17, 0.95);
+  border: 1px solid rgba(207, 171, 98, 0.25);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+.site-nav.is-open {
+  display: grid;
+}
+
+.site-nav a,
+.language-switch {
+  border: 1px solid rgba(207, 171, 98, 0.2);
+  border-radius: 999px;
+  padding: 0.8rem 0.95rem;
+  text-align: center;
+  color: var(--ivory);
+  background: rgba(247, 240, 230, 0.08);
+}
+
+.site-nav a.is-current {
+  background: rgba(207, 171, 98, 0.18);
+}
+
+.language-switch {
+  cursor: pointer;
+}
+
+
+.hero-content {
+  min-height: calc(100vh - 9rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 4rem 1rem 1.5rem;
+  z-index: 1;
+}
+
+.overline {
+  margin: 0 0 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 1.2rem;
+  color: var(--gold);
+}
+
+
+.hero h1,
+.ceremony-panel h2,
+.rsvp-intro h2,
+.registry-copy h2,
+.contact-copy h2,
+.story-card h2
+{
+  margin: 0;
+  font-size: clamp(1.6rem, 4vw, 4.4rem);
+  line-height: 0.96;
+  font-weight: 450;
+  letter-spacing: 0.03em;
+
+}
+
+.hero h1{
+  font-size: clamp(2.6rem, 8vw, 5.4rem);
+  letter-spacing: 0.02em;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.hero-copy,
+.story-card p,
+.panel-copy p,
+.detail-card p,
+.rsvp-intro p,
+.registry-copy p,
+.contact-copy p,
+.portrait-copy p {
+  line-height: 1.75;
+  font-size: 1rem;
+}
+
+.hero-copy {
+  max-width: 32rem;
+  margin: 1.2rem 0 0;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.primary-link,
+.secondary-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.9rem 1.35rem;
+  border-radius: 999px;
+}
+
+.primary-link {
+  background: linear-gradient(135deg, var(--gold) 0%, #e3c17c 100%);
+  color: var(--lacquer-deep);
+  box-shadow: 0 10px 24px rgba(34, 21, 23, 0.18);
+}
+
+.secondary-link {
+  border: 1px solid rgba(247, 240, 230, 0.42);
+  color: var(--ivory);
+  background: rgba(247, 240, 230, 0.08);
+}
+
+.hero-controls {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.8rem;
+  z-index: 1;
+}
+
+.slide-arrow {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(247, 240, 230, 0.28);
+  background: rgba(247, 240, 230, 0.1);
+  color: var(--ivory);
+}
+
+.slide-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+.slide-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  border: none;
+  background: rgba(247, 240, 230, 0.4);
+}
+
+.slide-dot.is-active {
+  background: var(--gold);
+}
+
+.page-shell {
+  position: relative;
+  z-index: 1;
+  padding: 1.25rem 1rem 6rem;
+}
+
+.feature-grid,
+.detail-columns,
+.ceremony-panel,
+.rsvp-shell,
+.registry-band,
+.schedule-band,
+.contact-panel {
+  margin: 0 auto 1.25rem;
+}
+
+.feature-grid,
+.detail-columns {
+  display: grid;
+  gap: 1rem;
+}
+
+.story-card,
+.detail-card,
+.panel-copy,
+.panel-media,
+.rsvp-intro,
+.rsvp-form-chinese,
+.registry-copy,
+.registry-art,
+.contact-copy,
+.contact-media {
+  background: rgba(251, 247, 240, 0.92);
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(34, 21, 23, 0.08);
+}
+
+.story-card,
+.detail-card,
+.panel-copy,
+.rsvp-intro,
+.rsvp-form-chinese,
+.schedule-copy,
+.registry-copy,
+.contact-copy {
+  background:
+    linear-gradient(180deg, rgba(104, 25, 31, 0.96) 0%, rgba(61, 11, 16, 0.98) 100%);
+  color: var(--ivory);
+}
+
+.story-card h2,
+.detail-card h3,
+.panel-copy h2,
+.rsvp-intro h2,
+.schedule-copy h2,
+.registry-copy h2,
+.contact-copy h2,
+.story-card p,
+.detail-card p,
+.panel-copy p,
+.rsvp-intro p,
+.registry-copy p,
+.contact-copy p,
+.schedule-copy,
+.schedule-item strong,
+.mini-details strong,
+.rsvp-form-chinese,
+.rsvp-form-chinese span,
+.attendance-fieldset legend {
+  color: var(--ivory);
+}
+
+.story-card .overline,
+.detail-card .overline,
+.panel-copy .overline,
+.rsvp-intro .overline,
+.schedule-copy .overline,
+.registry-copy .overline,
+.contact-copy .overline,
+.mini-details span,
+.schedule-item span,
+.detail-card span{
+  color: var(--gold);
+}
+
+.story-card,
+.detail-card,
+.panel-copy,
+.rsvp-intro,
+.registry-copy,
+.contact-copy,
+.rsvp-form-chinese {
+  padding: 1.4rem;
+}
+
+.travel-guide {
+  display: grid;
+  gap: 1.15rem;
+}
+.travel-guide .overline{
+  margin-bottom: 0;
+  padding-bottom: 0;
+  bottom: 0;
+  gap: 0;
+}
+
+.travel-guide h2, .travel-guide h4{
+  padding-top: 0;
+  margin-top: 0;
+  top: 0;
+  font-weight: 450;
+  gap: 0;
+}
+
+.travel-layout .travel-guide {
+  grid-column: 1 / -1;
+}
+
+
+.travel-lead,
+.travel-note,
+.travel-copy p,
+.photo-placeholder-copy p {
+  margin: 0;
+}
+
+.travel-note {
+  color: var(--gold);
+}
+
+.travel-recommendations {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.travel-item {
+  display: grid;
+  gap: 1rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(247, 240, 230, 0.14);
+}
+
+.travel-item:first-child {
+  padding-top: 0.4rem;
+  border-top: none;
+}
+
+.travel-icon-block {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+}
+
+.travel-link {
+  display: grid;
+  gap: 0.75rem;
+  color: inherit;
+}
+
+.travel-icon {
+  width: 64px;
+  height: 64px;
+  color: var(--gold);
+}
+
+.travel-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.travel-icon-block h4,
+.photo-placeholder-copy h3 {
+  margin: 0;
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.photo-placeholder-card {
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(180deg, rgba(104, 25, 31, 0.9) 0%, rgba(61, 11, 16, 0.96) 100%);
+}
+
+.photo-placeholder-copy {
+  max-width: 20rem;
+  text-align: center;
+}
+
+.panel-media,
+.registry-art,
+.contact-media {
+  overflow: hidden;
+}
+
+.panel-media img,
+.detail-card.image-card img,
+.registry-art img,
+.contact-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ceremony-panel,
+.registry-band,
+.contact-panel,
+.rsvp-shell {
+  display: grid;
+  gap: 1rem;
+}
+
+.mini-details {
+  display: grid;
+  gap: 0.8rem;
+  margin: 1.25rem 0 1.35rem;
+}
+
+.mini-details div {
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(247, 240, 230, 0.14);
+}
+
+.mini-details span,
+.schedule-item span {
+  color: var(--gold);
+}
+
+.mini-details span {
+  display: block;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.74rem;
+}
+
+.location-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.8rem;
+}
+
+.secondary-action {
+  border: none;
+}
+
+.rsvp-form-chinese {
+  display: grid;
+  gap: 1rem;
+}
+
+.lookup-card,
+.lookup-submit {
+  width: 100%;
+}
+
+.lookup-card,
+.household-panel {
+  gap: 1rem;
+  padding: 1.1rem;
+  border-radius: 18px;
+  background: rgba(247, 240, 230, 0.05);
+  border: 1px solid rgba(247, 240, 230, 0.1);
+}
+
+.lookup-card {
+  display: grid;
+}
+
+.household-panel {
+  display: none;
+}
+
+.household-panel.is-visible {
+  display: grid;
+  animation: householdPanelFadeIn 0.35s ease forwards;
+}
+
+@keyframes householdPanelFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lookup-card h3,
+.household-panel > h3 {
+  margin: 0;
+  font-size: 1.45rem;
+  line-height: 1.15;
+}
+
+.lookup-submit {
+  width: 100%;
+}
+
+.household-members {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.household-member-card {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: rgba(247, 240, 230, 0.05);
+  border: 1px solid rgba(247, 240, 230, 0.1);
+}
+
+.household-member-copy {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.household-member-copy h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.household-attendance-options {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.elegant-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  line-height: 1.75;
+}
+
+.elegant-list li + li {
+  margin-top: 0.55rem;
+}
+
+.rsvp-form-chinese label,
+.attendance-fieldset {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.rsvp-form-chinese span,
+.attendance-fieldset legend {
+  color: var(--gold);
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+}
+
+.rsvp-form-chinese input,
+.rsvp-form-chinese textarea {
+  width: 100%;
+  border: 1px solid rgba(247, 240, 230, 0.16);
+  border-radius: 18px;
+  padding: 0.95rem 1rem;
+  background: rgba(247, 240, 230, 0.08);
+  color: var(--ivory);
+}
+
+.rsvp-form-chinese input::placeholder,
+.rsvp-form-chinese textarea::placeholder {
+  color: rgba(247, 240, 230, 0.66);
+}
+
+.rsvp-form-chinese input:focus,
+.rsvp-form-chinese textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(207, 171, 98, 0.16);
+}
+
+.attendance-fieldset {
+  border: none;
+  padding: 0;
+}
+
+.selection-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(247, 240, 230, 0.12);
+  background: rgba(247, 240, 230, 0.06);
+  color: var(--ivory);
+}
+
+.selection-pill input {
+  width: auto;
+  margin: 0;
+}
+
+.split-inputs {
+  display: grid;
+  gap: 1rem;
+}
+
+.button-submit {
+  border: none;
+  cursor: pointer;
+}
+
+.form-status-chinese {
+  min-height: 1.4rem;
+  margin: 0;
+  color: var(--gold);
+}
+
+.rsvp-dialog {
+  width: min(28rem, calc(100vw - 2rem));
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+.rsvp-dialog::backdrop {
+  background: rgba(28, 10, 14, 0.72);
+}
+
+.rsvp-dialog-copy {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(104, 25, 31, 0.98) 0%, rgba(61, 11, 16, 1) 100%);
+  color: var(--ivory);
+  box-shadow: 0 20px 50px rgba(34, 21, 23, 0.35);
+}
+
+.rsvp-dialog-copy h3,
+.rsvp-dialog-copy p {
+  margin: 0;
+}
+
+.faq-layout .detail-card,
+.detail-card.image-card {
+  min-height: 220px;
+}
+
+.faq-layout {
+  grid-auto-rows: 1fr;
+}
+
+.faq-layout .detail-card {
+  height: 100%;
+}
+
+.faq-layout .faq-image-card {
+  height: auto;
+  align-self: start;
+}
+
+.faq-layout .faq-image-card img {
+  height: auto;
+}
+
+.schedule-band {
+  display: grid;
+  gap: 1rem;
+  margin: 0 auto 1.25rem;
+}
+
+.schedule-copy {
+  padding: 1.4rem;
+}
+
+.schedule-items {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1.2rem;
+}
+
+.schedule-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid rgba(247, 240, 230, 0.14);
+}
+
+.faq-question {
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid rgba(247, 240, 230, 0.14);
+}
+
+.faq-question h3{
+  font-weight: 475;
+  letter-spacing: 0.04em;
+}
+
+.faq-question .answer{
+  font-style: italic;
+}
+
+.schedule-item span{
+  color: var(--jade);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.75rem;
+}
+
+.bank{
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.bank img{
+  padding-left:0;
+  padding-right: 0;
+  width: 100%;
+}
+
+
+.contact-icons {
+  display: flex;
+  gap: 0.75rem;
+  margin: 1.15rem 0 1.1rem;
+}
+
+.contact-icon-link {
+  width: 52px;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(247, 240, 230, 0.08);
+}
+
+.contact-icon-link img {
+  width: 99%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.footer-note {
+  display: block;
+  margin: 2.25rem auto 0;
+}
+
+.footer-note-copy {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-note-copy h2 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.footer-note .contact-icons {
+  justify-content: center;
+}
+
+.footer-note .primary-link {
+  width: auto;
+}
+
+.info-image-card,
+.info-image-panel {
+  background: var(--ivory);
+  color: var(--ink);
+  border: none;
+}
+
+.info-image-card img,
+.info-image-panel img {
+  object-fit: contain;
+  padding: 1rem;
+  background: var(--ivory);
+}
+
+@media (min-width: 900px) {
+  .top-shell {
+    padding: 1.2rem 1.6rem 0;
+  }
+
+  .menu-toggle-chinese {
+    display: none;
+  }
+
+  .site-nav {
+    position: fixed;
+    top: 1.4rem;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.65rem;
+    background: rgba(40, 12, 17, 0.82);
+    width: auto;
+  }
+
+  .site-nav a,
+  .language-switch {
+    padding: 0.72rem 1rem;
+    min-width: 5.2rem;
+  }
+
+  .hero-content {
+    justify-content: center;
+    padding: 5rem 4rem 4rem;
+  }
+
+  .page-shell {
+    padding: 2rem 2rem 5rem;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ceremony-panel,
+  .rsvp-shell,
+  .registry-band,
+  .contact-panel {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .detail-columns {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .faq-layout {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .travel-recommendations {
+    gap: 0;
+  }
+
+  .travel-item {
+    grid-template-columns: 185px minmax(0, 1fr);
+    align-items: start;
+    gap: 1.6rem;
+  }
+
+  .travel-copy {
+    padding-left: 1.5rem;
+    border-left: 1px solid rgba(247, 240, 230, 0.18);
+  }
+
+  .footer-note {
+    display: block;
+  }
+
+  .split-inputs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .household-attendance-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .story-card,
+  .detail-card,
+  .panel-copy,
+  .rsvp-intro,
+  .registry-copy,
+  .contact-copy,
+  .rsvp-form-chinese {
+    padding: 2rem;
+  }
+}
+.cursive-text {
+  font-family: "Copperplate","Times New Roman";
+  font-size: 20px;
+  font-weight: 10;
+  color: var(--paper);
+}
